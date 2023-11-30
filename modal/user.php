@@ -51,3 +51,8 @@
         $sql = "UPDATE `taikhoan` SET `pass`= '$pass' WHERE `email` = "."'".$email."'";
         pdo_execute($sql);
     }
+    function delete_user($id){
+        $code_verify = mt_rand(100000,999999);
+        $sql = "UPDATE `taikhoan` SET `code_verify`= '$code_verify' WHERE id=".$id;
+        pdo_execute($sql);
+    }

@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <header>
-            <nav>
+            <nav style="list-style: none; gap:15px;">
                 <li><a href="<?php echo 'index.php?act=sanpham' ?>">Danh sách sản phẩm</a></li>
                 <li><a href="<?php echo 'index.php?act=danhmuc' ?>">Danh sách danh mục</a></li>
                 <li><a href="<?php echo 'index.php?act=binhluan' ?>">Danh sách bình luận</a></li>

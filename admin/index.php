@@ -85,6 +85,9 @@ if(isset($_GET['act']) && $_GET['act']!= ''){
         case 'editorder':
             include 'edit/editorder.php';
             break;
+        case 'xoauser':
+            include 'delete/deleteuser.php';
+            break;
         }
         
 

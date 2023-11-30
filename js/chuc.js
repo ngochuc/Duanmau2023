@@ -82,6 +82,22 @@ $('.xoadm').on('click', function(){
             }
           })
     })
+    $('.xoauser').on('click', function(){
+      Swal.fire({
+          background: '#fff',
+          title: 'Bạn có chắc muốn xóa?',
+          text: "Bạn sẽ không thể lấy lại!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.open('index.php?act=xoauser&id=' + $(this).attr('data-id'))
+          }
+        })
+  })
 $('.cart').on('click',function(){
     var pros = document.querySelectorAll('.cart-sp');
     console.log(pros);

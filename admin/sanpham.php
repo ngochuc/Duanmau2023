@@ -37,7 +37,13 @@
                 <td><img src="../upload/<?php echo $img ?>" height="40px" width="40px" alt=""></td>
                 <td><?php echo $iddm ?></td>
                 <td><?php echo $luotxem ?></td>
-                <td><?php echo $mota ?></td>
+                <td>
+                    <?php 
+                        foreach(json_decode($mota) as $mt){
+                            echo $mt->name . ' : ' . $mt->value . '<br>';
+                        }
+                    ?>
+                </td>
                 <td>
                     <?php foreach(json_decode($soluong) as $sl): ?>
                     <span><?php echo $sl->color ?></span>

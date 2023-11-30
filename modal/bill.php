@@ -95,3 +95,7 @@
         $sql = "INSERT INTO `status_order`( `status`, `date`, `id_order`) VALUES ('ordered',NOW(),'$id_order')";
         pdo_execute($sql);
     }
+    function shipped_order($id_order){
+        $sql = "INSERT INTO `status_order`( `status`, `date`, `id_order`) VALUES ('shipped',NOW(),'$id_order')";
+        pdo_execute($sql);
+    }
