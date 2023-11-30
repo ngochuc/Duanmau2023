@@ -1,7 +1,6 @@
 <?php
     include '../../modal/pdo.php';
     include '../../modal/user.php';
-    include '../../modal/mailer.php';
     session_start();
     if(!empty($_SESSION['err_signup'])){
         $err = $_SESSION['err_signup'];

@@ -140,7 +140,7 @@ $('.xoacart').on('click', function(){
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.open('view/xoaspcart.php?idpro=' + $(this).attr('data-idpro')+'&iduser='+$(this).attr('data-iduser'))
+        window.open('view/cart/xoaspcart.php?idpro=' + $(this).attr('data-idpro')+'&iduser='+$(this).attr('data-iduser'))
       }
     })
 })

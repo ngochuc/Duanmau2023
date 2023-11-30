@@ -66,15 +66,26 @@
                 <p>Tài khoản của tôi</p>
             </div>
             <ul>
-                <li class="info_user-hoso">Hồ sơ</li>
-                <li class="info_user-diachi">Địa chỉ</li>
-                <li>Đổi mật khẩu</li>
+                <li class="info_user-hoso">
+                    <i class="fa-solid fa-circle-user"></i>
+                    Hồ sơ
+                </li>
+                <li class="info_user-diachi">
+                    <i class="fa-solid fa-location-dot"></i>    
+                    Địa chỉ
+                </li>
+                <li>
+                    <i class="fa-solid fa-lock"></i>
+                    Đổi mật khẩu
+                </li>
             </ul>
         </div>
         <div class="left_info-orders">
+            <i class="fa-solid fa-clipboard-list"></i>
             <p class="info_user-orders">Đơn mua</p>
         </div>
         <div class="left_inof-vouchers">
+            <i class="fa-solid fa-ticket"></i>
             <p>Kho voucher</p>
         </div>
     </div>
@@ -162,9 +173,15 @@
         </div>
         <div class="list_orders">
             <?php foreach($list_orders as $order):
-                        $list_pro =json_decode($order['product']); ?>
+                        $list_pro =json_decode($order['product']);  ?>
             <div class="oder_item">
-                <div class="order_item-id">Mã đơn hàng: <?php echo $order['id'] ?></div>
+                <div class="order_item_title">
+                    <div class="order_title_info">
+                    <div class="order_item-id">Mã đơn hàng: <?php echo $order['id'] ?></div>
+                    <div class="order_item-id">Ngày đặt hàng: <?php echo $order['ngay_dat'] ?></div>
+                    </div>
+                    <div class="btn_more detail_order delete_order" data-id = '<?php echo $order['id'] ?>' >Hủy đơn hàng</div>
+                </div>
                 <div class="order_item_listpro">
                     <?php
                     $total_price = 0;
@@ -188,7 +205,7 @@
                                 <span>'.$p['name'].'</span>
                             </div>
                             <div class="bill-pro-price" style="flex: 2;">'.currency_format($p['price']).'</div>
-                            <input class="bill-pro-quatity" name="quatity[]" value="'.$pro->quatyti.'" style="flex: 2; border: none; text-align: center;" readonly>
+                            <input class="bill-pro-quatity" name="quatity[]" value="'.$pro->quatyti.'" style="flex: 2; border: none; text-align: center; background-color: #f0f0f0;" readonly>
                             <div class="bill-pro-subtotal" style="flex: 2;">'. currency_format($p['price']*$pro->quatyti).'</div>
                         </div>';
                         $total_price += $p['price']*$pro->quatyti;
@@ -198,7 +215,7 @@
                 </div>
                 <p class="total_bill">Tổng đơn hàng: <?php echo currency_format($total_price+20000)?></p>
                 <div class="btn_more detail_order" data-id = '<?php echo $order['id'] ?>' onclick="window.open('index.php?act=order_status&id_order='+<?php echo $order['id'] ?>)">Xem chi tiết đơn hàng</div>
-                <div class="btn_more detail_order delete_order" data-id = '<?php echo $order['id'] ?>' >Hủy đơn hàng</div>
+
             </div>
             <?php endforeach ?>
         </div>

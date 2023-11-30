@@ -39,7 +39,40 @@
                         </div>
                     </div>
     </div>
-    <div class="footer">Chúc pro vip</div>
+    <div class="footer">
+    <div class="p1">
+            <ul>
+                <li><a href="#">Liên Hệ Với chúng tôi</a></li>
+                <li><a href="#">luxuryshop@gmail.com</a></li>
+                <li><a href="#">0123456789</a></li>
+                <li><a href="#">Đường Trịnh Văn Bô, Nam Từ Liêm, Hà Nội</a></li>
+            </ul>
+        </div>
+        <div class="p2">
+            <ul>
+                <li><a href="index.php?act=shopall">Shop All</a></li>
+                <li><a href="index.php?act=mobile">Mobile Phones</a></li>
+                <li><a href="index.php?act=tablet">Tablet</a></li>
+                <li><a href="index.php?act=laptop">Laptop</a></li>
+            </ul>
+        </div>
+        <div class="p3">
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Youtube</a></li>
+            </ul>
+        </div>
+        <div class="p4">
+            <ul>
+                <li><a href="index.php?act=infouser">Acount</a></li>
+                <li><a href="#">Đơn mua</a></li>
+                <li><a href="#">Giỏ hàng</a></li>
+                <li><a href="#">Kho voucher</a></li>
+            </ul>
+        </div>
+    </div>
     <script src="js/chuc.js"></script>
 </body>
 </html>

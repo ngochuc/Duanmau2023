@@ -30,7 +30,7 @@
                     include "view/chitietsp.php";
                     break;
                 case 'addcart':
-                    include 'view/addcart.php';
+                    include 'view/cart/addcart.php';
                     break;
                 case "shopall":
                     if( $_SERVER['REQUEST_METHOD'] == "POST" ){
@@ -54,7 +54,7 @@
                         $index = ($index - 1 )*15;
                         $listsp = loadall_sp($index,15);
                     }
-                    include 'view/shopall.php';
+                    include 'view/catetogory/shopall.php';
                     break;
                 case "mobile":
                     if( (isset($_POST['keyw'])) ){
@@ -77,7 +77,7 @@
                         $index = ($index - 1 )*15;
                         $listmobile = loadall_sp_dm(2,$index,15);
                     }
-                    include 'view/mobile.php';
+                    include 'view/catetogory/mobile.php';
                     break;
                 case "laptop":
                     if( (isset($_POST['keyw'])) ){
@@ -100,7 +100,7 @@
                         $index = ($index - 1 )*15;
                         $listlaptop = loadall_sp_dm(1,$index,15);
                     }
-                    include 'view/laptop.php';
+                    include 'view/catetogory/laptop.php';
                     break;
                 case "tablet":
                     if( (isset($_POST['keyw'])) ){
@@ -119,7 +119,7 @@
                         $index = ($index - 1 )*15;
                         $listtablet = loadall_sp_dm(3,$index,15);
                     }
-                    include 'view/tablet.php';
+                    include 'view/catetogory/tablet.php';
                     break;
                 case 'bill':
                     include 'view/bill.php';
@@ -128,13 +128,13 @@
                     include 'view/address/add_address.php';
                     break;
                 case 'order_status':
-                    include 'view/order_status.php';
+                    include 'view/order/order_status.php';
                     break;
                 case 'infouser':
                     include 'view/infouser.php';
                     break;
                 case 'delete_order':
-                    include 'view/delete_order.php';
+                    include 'view/order/delete_order.php';
                     break;
             }
     

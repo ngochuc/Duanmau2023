@@ -72,7 +72,7 @@
         $user = load_one_user($_SESSION['user_name']);
         if($verify_code == $user['code_verify']){
             confirmed_user($_SESSION['user_name']);
-            header('location: ../index.php');
+            header('location: ../../index.php');
         }else{
             echo 'Mã xác nhận chưa chính xác';
         }
@@ -91,6 +91,7 @@
 </head>
     <body>
         <h1 class="title_form">Nhập lại mã xác nhận</h1>
+        <p>Mã xác nhận của bạn đã được gửi tới email , vui lòng hãy kiểm tra lại email để lấy mã xác nhận! </p>
         <form action="signup_controller.php?act=confirm" method="POST" class="form_verify">
             <input type="text" name="verify_code">
             <input type="submit" value="Xác nhận">

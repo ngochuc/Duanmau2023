@@ -205,6 +205,6 @@
                 }
                 $pro_to_order = json_encode($pro_to_order);
                 add_orders($total_price,$id_address,$id_user,$pro_to_order);
-                echo '<script>window.location.href="view/odersussesful.php";</script>';
+                echo '<script>window.location.href="view/order/odersussesful.php";</script>';
             }
     ?>

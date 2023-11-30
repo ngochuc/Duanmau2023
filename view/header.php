@@ -18,6 +18,9 @@
 <body>
     <div class="container">
         <header>
+            <div class="logo">
+                <img src="upload/logo.png" alt="" height="80px" width="auto" style="margin-left: 50%;">
+            </div>
             <nav>
                 <li><a href="index.php?act=home">Home</a></li>
                 <li><a href="index.php?act=shopall">Shop all</a></li>

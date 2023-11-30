@@ -1,34 +1,41 @@
-var album=[];
-for(var i=0;i<4;i++){
-    album[i]=new Image();
-    album[i].src="/duan1/access/img/slide"+i+".jpg";
-}
- var interval=setInterval(slideshow,2000);
-index=0;
-function slideshow(){
-    index++;
-    if(index>3){
-        index=0;
+
+$(document).ready(function(){
+    let active = 0;
+    let lengthItems = $('.slider .listbanner .item').length - 1;
+
+    $('#next').click(function(){
+      if(active + 1 > lengthItems){
+        active = 0;
+      } else {
+        active = active + 1;
+      }
+      reloadSlider();
+    });
+
+    $('#prev').click(function(){
+      if(active - 1 < 0){
+        active = lengthItems;
+      } else {
+        active = active - 1;
+      }
+      reloadSlider();
+    });
+
+    let refreshSlider = setInterval(function(){ $('#next').click(); }, 4000);
+
+    function reloadSlider(){
+      let checkLeft = $('.slider .listbanner .item').eq(active).position().left;
+      $('.slider .listbanner').css('left', -checkLeft + 'px');
+
+      $('.slider .dots li.active').removeClass('active');
+      $('.slider .dots li').eq(active).addClass('active');
+
+      clearInterval(refreshSlider);
+      refreshSlider = setInterval(function(){ $('#next').click(); }, 4000);
     }
-    document.getElementById("banner").src=album[index].src;
-}
-function slide_out(){
-    document.getElementById("banner").style.animation = "slideleft ease-in-out 0.5s";
-}
-function next(){
-    index++;
-    if(index>3){
-        index=0;
-    }
-    document.getElementById("banner").src=album[index].src;
-   
-}
-function pre(){
-    index--;
-    if(index<0){
-        index=3;
-    }
-    document.getElementById("banner").src=album[index].src;
-   
-}
-console.log('1');
+
+    $('.slider .dots li').click(function(){
+      active = $(this).index();
+      reloadSlider();
+    });
+  });

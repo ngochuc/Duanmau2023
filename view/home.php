@@ -1,5 +1,5 @@
 <script src="js/slide.js"></script>
-<div class="slide mb"> 
+<!-- <div class="slide mb"> 
             <img width="690px" height="600px" id="banner" src="access/img/slide0.jpg" alt="">
             <button class="btn_slide-left">
                 <i class="fa-solid fa-angle-left icon_slide" onclick="pre()" ></i>
@@ -7,9 +7,37 @@
             <button class="btn_slide-right">
                 <i class="fa-solid fa-angle-right icon_slide" onclick="next()"></i>
             </button>
-</div>    
+</div>     -->
+<div class="banner">
+    <div class="slider">
+        <div class="listbanner">
+            <div class="item">
+                <a href=""><img src="access/img/slide0.jpg" alt=""></a>
+            </div>
+            <div class="item">
+                <a href=""><img src="access/img/slide1.jpg" alt=""></a>
+            </div>
+            <div class="item">
+                <a href=""><img src="access/img/slide2.jpg" alt=""></a>
+            </div>
+            <div class="item">
+                <a href=""><img src="access/img/slide3.jpg" alt=""></a>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
     <div class="list mb">
-            <h1 class="mb" style="margin: 40px;">Top 5 điện thoại nổi bật</h1>
+            <h1 class="mb" style="margin: 40px;">Top 5 mobile nổi bật</h1>
         <div class="listsp">
             <?php foreach($listdt_popular as $pro):
                 extract($pro);

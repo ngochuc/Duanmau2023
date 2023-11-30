@@ -25,15 +25,112 @@ header{
     background-color: #fff;
     box-shadow: inset 0px 10px 15px rgba(0, 0, 0, 0.05);
 }
-.footer{
+.banner{
+    margin: 0;
+    font-family: monospace;
+}
+.slider{
+    max-width: 100vw;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+.listbanner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    width: max-content;
+    transition: 1s;
+}
+.listbanner img{
+    width: 1220px;
+    max-width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+.buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.buttons button{
+    width: 50px;
     height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.dots{
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    left: 0;
     width: 100%;
-    background-color: #6e3ffb;
-    color: white;
-    font-size: 30px;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
+}
+.dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 20px;
+    transition: 1s;
+}
+.dots li.active{
+    width: 30px;
+}
+.footer{
+    height: 250px;
+    width: 100%;
+    background-color: black;
+    display: flex;
     align-items: center;
+    }
+.footer div{
+    font-size:13px;
+    width:350px;
+    
+}
+.footer div li{
+    list-style: none;
+    padding-top:30px;
+}
+.footer a{
+color: white;
+text-decoration: none;
+}
+
+.footer a:hover{
+    color: #855ff7;
+    transition: 0.7s;
+}
+
+.p1{
+    padding-left:100px;
+}
+
+.p2{
+    padding-left:100px;
+}
+
+.p3{
+    padding-left:50px;
+}
+
+.p4{
+    padding-left:10px;
 }
 nav{
     top: 0;
@@ -44,10 +141,11 @@ nav{
 nav li{
     list-style: none;
     margin: 0 20px;
+    cursor: pointer;
 }
 nav li a{
     text-decoration: none;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
 nav li a:hover{
     color: #855ff7;
@@ -56,17 +154,20 @@ nav li a:hover{
     display: flex;
     align-items: center;
     margin-right: 20px;
+    gap: 20px;
 }
 .loginhome a{
     text-decoration: none;
-    font-size: 1vw;
+    font-size: 1.2vw;
     margin-right: 20px;
+    cursor: pointer;
 }
 .loginhome a:hover{
     color: #855ff7;
 }
 .cart i:hover{
     color: #855ff7;
+    cursor: pointer;
 }
 .presonal i:hover{
     color: #855ff7;
@@ -124,6 +225,20 @@ nav li a:hover{
 .list{
     width: 100%;
     background-color: #f0f0f0;
+    overflow: hidden;
+    & h1{
+        width: 30%;
+        position: relative;
+    }
+    & h1::after{
+        position: absolute;
+        content: "";
+        background-color: black;
+        height: 4px;
+        width: 275%;
+        bottom: 10px;
+        left: 40%;
+    }
 }
 .listsp{
     display: flex;
@@ -1403,28 +1518,41 @@ form{
                 list-style: none;
                 cursor: pointer;
                 & li{
-                    margin: 5px;
+                    margin: 10px;
                     font-size: 16px;
                 }
                 & li:hover{
                     color: #6e3ffb;
                 }
+                & li:hover i{
+                    color: #6e3ffb;
+                }
             }
         }
         & .left_info-orders{
+            display: flex;
+            gap: 10px;
             margin-bottom: 20px;
             font-size: 18px;
             cursor: pointer;
         }
-        & .left_info-orders:hover .left_info-orders>p{
+        & .left_info-orders:hover i{
+            color: #6e3ffb;
+        }
+        & .left_info-orders:hover p{
             color: #6e3ffb;
         }
         & .left_inof-vouchers{
+            display: flex;
+            gap: 10px;
             font-size: 18px;
             margin-bottom: 10px;
             cursor: pointer;
         }
-        & .left_inof-vouchers:hover .left_info-orders>p{
+        & .left_inof-vouchers:hover i{
+            color: #6e3ffb;
+        }
+        & .left_inof-vouchers:hover p{
             color: #6e3ffb;
         }
     }
@@ -1580,50 +1708,71 @@ form{
             }
         }
         & .list_orders{
+            
             margin: 20px;
             & .oder_item{
+                background-color: #f0f0f0;
+                box-shadow: -3px -3px 7px #ffffff73;
+                box-shadow: 10px 11px 5px #5e687949;
+                margin: 30px 20px;
+                padding: 20px;
+                /* border-bottom: 1px solid gray; */
                 & .total_bill{
-                    text-align: center;
-                    font-size: 20px;
-                    color: #6e3ffb;
-                    margin: 20px;
-                    width: 100%;
+                text-align: center;
+                font-size: 25px;
+                color: red;
+                margin: 20px;
+                width: 100%;
+                }
+                & .order_item_title{
+                display: flex;
+                padding-bottom: 10px;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: dotted gray 1px;
+                    & .detail_order{
+                        margin: 0px;
+                        border-radius: 5px;
+                        height: 40px;
+                        width: auto;
+                        padding: 0 20px;
+                            }
                 }
                 & .detail_order{
-                    width: 200px;
-                    color: white;
-                    cursor: pointer;
-                    text-decoration: none;
+                width: 200px;
+                color: white;
+                cursor: pointer;
+                text-decoration: none;
+                border-radius: 5px;
+                margin: 20px auto;
                 }
                 
-                margin: 10 20px;
-                border-bottom: 1px solid gray;
-                & .order_item-id{
-                    padding: 10px;
-                    border-bottom: 1px dotted rgb(198, 198, 198);
-                }
+                
+                
                 & .order_item_listpro{
-                    padding-top: 10px;
+                padding-top: 10px;
                     & .bill-header {
-                        display: flex;
-                        align-items: center;
-                        & :nth-child(4),:nth-child(2),:nth-child(3){
-                            color: gray;
-                            display: flex;
-                            justify-content: center;
+                display: flex;
+                align-items: center;
+                                & :nth-child(4),:nth-child(2),:nth-child(3){
+                color: gray;
+                display: flex;
+                justify-content: center;
                         }
                     }
                     & .bill-pro-item{
-                        display: flex;
-                        margin: 10px 0;
-                        & div{
+                display: flex;
+                margin: 10px 0;
+                        &
+                div{
                             display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        }
+                align-items: center;
+                justify-content: center;
+                            }
                         & :nth-child(1){
-                            justify-content: left;
-                            & img{
+                justify-content: left;
+                            &
+                img{
                                 margin-right: 5px;
                             }
                         }

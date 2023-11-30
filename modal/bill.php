@@ -53,7 +53,7 @@
         return $result;
     }
     function load_list_orders($id){
-        $sql = "SELECT * from `order` where id_user = $id ";
+        $sql = "SELECT * from `order` where id_user = $id order by `ngay_dat` desc";
         $result = pdo_query($sql);
         return $result;
     }
