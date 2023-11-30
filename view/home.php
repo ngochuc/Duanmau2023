@@ -1,13 +1,4 @@
 <script src="js/slide.js"></script>
-<!-- <div class="slide mb"> 
-            <img width="690px" height="600px" id="banner" src="access/img/slide0.jpg" alt="">
-            <button class="btn_slide-left">
-                <i class="fa-solid fa-angle-left icon_slide" onclick="pre()" ></i>
-            </button>
-            <button class="btn_slide-right">
-                <i class="fa-solid fa-angle-right icon_slide" onclick="next()"></i>
-            </button>
-</div>     -->
 <div class="banner">
     <div class="slider">
         <div class="listbanner">

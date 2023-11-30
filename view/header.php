@@ -21,12 +21,14 @@
             <div class="logo">
                 <img src="upload/logo.png" alt="" height="80px" width="auto" style="margin-left: 50%;">
             </div>
-            <nav>
-                <li><a href="index.php?act=home">Home</a></li>
-                <li><a href="index.php?act=shopall">Shop all</a></li>
-                <li><a href="index.php?act=mobile">Mobile phones</a></li>
-                <li><a href="index.php?act=laptop">Laptop</a></li>
-                <li><a href="index.php?act=tablet">Tablet</a></li>
+            <nav class="stroke">
+                <ul>
+                    <li><a href="index.php?act=home">Home</a></li>
+                    <li><a href="index.php?act=shopall">Shop all</a></li>
+                    <li><a href="index.php?act=mobile">Mobile phones</a></li>
+                    <li><a href="index.php?act=laptop">Laptop</a></li>
+                    <li><a href="index.php?act=tablet">Tablet</a></li>
+                </ul>
             </nav>
             <div class="loginhome">
                 <div class="cart" onclick="cart()"><i class="fa-solid fa-cart-shopping"></i></div>
