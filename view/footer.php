@@ -24,7 +24,7 @@
                                         <p class="price_cart" value = "<?php echo $cart['price'] ?>"><?php echo currency_format($cart['price'])  ?></p>
                                         <input type="number" min="1" value="<?php echo $cart['count'] ?>" name="count_cart" class="count_cart" data-idpro = "<?php echo $cart['id']?>" >
                                     </div>
-                                    <button class="btn_remove-cart xoacart" data-iduser = "<?php echo $_SESSION['uid'] ?>" data-idpro = "<?php echo $cart['id']?>" >Xóa</button>
+                                    <button class="btn_remove-cart xoacart" from = "sub_cart" data-iduser = "<?php echo $_SESSION['uid'] ?>" data-idpro = "<?php echo $cart['id']?>" >Xóa</button>
                                 </div>
                             </li>
                             <?php endforeach; endif;?>
@@ -35,7 +35,7 @@
                                 <div class="total_price">0</div>
                             </div>
                             <hr>
-                            <a href="index.php?act=bill" style="text-decoration: none;"><div class="btn_more buy" >Pay</div></a>
+                            <a href="index.php?act=cart" style="text-decoration: none;"><div class="btn_more buy" >Giỏ hàng</div></a>
                         </div>
                     </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="p1">
             <ul>
                 <li><a href="#">Liên Hệ Với chúng tôi</a></li>
-                <li><a href="#">luxuryshop@gmail.com</a></li>
+                <li><a href="#">taketimeshop@gmail.com</a></li>
                 <li><a href="#">0123456789</a></li>
                 <li><a href="#">Đường Trịnh Văn Bô, Nam Từ Liêm, Hà Nội</a></li>
             </ul>

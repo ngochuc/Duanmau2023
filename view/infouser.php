@@ -1,5 +1,5 @@
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['form'] == 'info'){
         $id_user = $_SESSION['uid'];
         $name = $_POST['name'];
         $email = $_POST['email'];
@@ -30,24 +30,54 @@
                 $error['file_ext']  = 'file k hợp lệ';
             }
         }else{
-            $new_file = 'Chưa có file';
+            $user = load_user_id($id_user);
+            $new_file = $user['img'];
         }
         if(empty($error)){
             update_user($id_user,$sex,$birthday,$tel,$new_file,$name,$email);
+            echo "<script>alert('Sửa thông tin thành công')</script>";
         }
         // echo $name.$email.$tel.$sex.$birthday.$new_file
     }
-    $id_user = $_SESSION['uid'];
-    $user = load_user_id($id_user);
     if(isset($_SESSION['uid'])){
+        $id_user = $_SESSION['uid'];
+        $user = load_user_id($id_user);
         $list_address = load_address($_SESSION['uid']);
+        $list_orders = load_list_orders($_SESSION['uid']);
     }else{
         header('location: view/login.php');
     }
-    if(isset($_SESSION['uid'])){
-        $list_orders = load_list_orders($_SESSION['uid']);
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['form'] == 'pass'){
+        $err = [];
+        $user = load_user_id($id_user);
+        if(isset($_POST['pass'])){
+            $pass = $_POST['pass'];
+        }else{
+            $err['pass'] = 'Mật khẩu không chính xác';
+        }
+        if(isset($_POST['pass'])){
+            $newpass = $_POST['newpass'];
+        }
+        if(isset($_POST['pass'])){
+            $confirm = $_POST['confirm'];
+        }
+    if($confirm == $newpass){
+        if(password_verify($pass,$user['pass'])){
+            $newpass = password_hash($newpass,PASSWORD_DEFAULT);
+            repass($newpass,$user['email']);
+            echo "<script>alert('Đổi mật khẩu thành công')</script>";
+        }else{
+            $err['pass'] = 'Mật khẩu không chính xác';
+            echo "<script>alert('Đổi mật khẩu thất bại')</script>";
+        }
+    }else{
+        $err['confirm'] = 'Mật khẩu nhập lại không chính xác';
+        echo "<script>alert('Đổi mật khẩu thất bại')</script>";
+    }
+
     }
 ?>
+
 <div class="info_user">
     <div class="left_info">
         <div class="left_info-info">
@@ -74,7 +104,7 @@
                     <i class="fa-solid fa-location-dot"></i>    
                     Địa chỉ
                 </li>
-                <li>
+                <li class="info_user-pass">
                     <i class="fa-solid fa-lock"></i>
                     Đổi mật khẩu
                 </li>
@@ -95,7 +125,7 @@
             <p>Quản lí thông tin hồ sơ để bảo mật tài khoản</p>
         </div>
         <div class="right-info_body">
-            <form action="index.php?act=infouser" method="post" enctype="multipart/form-data">
+            <form action="index.php?act=infouser&form=info" method="post" enctype="multipart/form-data">
                 <div class="right-info_item">
                     <p>Tên đăng nhập</p>
                     <input type="text" name="user" readonly value="<?php echo $user['user'] ?>">
@@ -158,7 +188,7 @@
                     </div>
                     <div class="btn-update_address">
                         <div class="address-item-right update-address" onclick="update_address(<?php echo $address['id'] ?>)">Cập nhật</div>
-                        <div class="address-item-right delete-address" data-id ="<?php echo $address['id'] ?>" >Xóa</div>
+                        <div class="address-item-right delete-address" style="color: red;" data-id ="<?php echo $address['id'] ?>" >Xóa</div>
                     </div>
                 </div>
                 <?php endforeach ?>
@@ -220,6 +250,33 @@
             <?php endforeach ?>
         </div>
     </div>
+    <div class="right_info right_info-repass">
+        <div class="right-info_header">
+            <h1>Đổi mật khẩu</h1>
+            <p>Quản lí thông tin hồ sơ để bảo mật tài khoản</p>
+        </div>
+        <div class="right-info_body">
+            <form action="index.php?act=infouser&form=pass" method="post">
+                <div class="right-info_item">
+                    <p>Nhập mật khẩu cũ</p>
+                    <input type="password" name="pass">
+                </div>
+                <div class="err"><?php if(isset($err['pass'])){ echo $err['pass'];} ?></div>
+                <div class="right-info_item">
+                    <p>Nhập mật khẩu mới</p>
+                    <input type="password" name="newpass">
+                </div>
+                <div class="right-info_item">
+                    <p>Nhập lại mật khẩu mới</p>
+                    <input type="password" name="confirm">
+                </div>
+                <div class="err"><?php if(isset($err['confirm'])){ echo $err['confirm'];} ?></div>
+                <input type="submit" class="btn_more" value="Đổi">
+            </form>
+        </div>
+
+
+    </div>   
 </div>
 <div class="modal add-address-checked" >
         <div class="overlay"></div>

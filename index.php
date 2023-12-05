@@ -136,6 +136,9 @@
                 case 'delete_order':
                     include 'view/order/delete_order.php';
                     break;
+                case 'cart':
+                    include 'view/cart/cart.php';
+                    break;
             }
     
         }else{

@@ -57,11 +57,11 @@
         $result = pdo_query($sql);
         return $result;
     }
-    // function load_status_order($id_order){
-    //     $sql = "SELECT * FROM `status_order` where id_order=$id_order";
-    //     $result = pdo_query($sql);
-    //     return $result;
-    // }
+    function load_status_order_count($id_order){
+        $sql = "SELECT * FROM `status_order` where id_order=$id_order";
+        $result = pdo_query($sql);
+        return $result;
+    }
     function delete_order($id_order ){
         $sql = "DELETE FROM `order` where id=$id_order";
         pdo_execute($sql);
@@ -97,5 +97,24 @@
     }
     function shipped_order($id_order){
         $sql = "INSERT INTO `status_order`( `status`, `date`, `id_order`) VALUES ('shipped',NOW(),'$id_order')";
+        pdo_execute($sql);
+    }
+    function thongke($from , $to){
+        $sql = "SELECT * from thongke where date between '$from' and '$to'";
+        $result = pdo_query($sql);
+        return $result;
+    }
+    function thongke_ngay($date){
+        $sql = "SELECT * from thongke where date = '$date'";
+        $result = pdo_query_one($sql);
+        return $result;
+    }
+    function update_thongke($date, $soluong,$doanhthu){
+        $sql = "UPDATE `thongke` set `soluong` = '$soluong', `doanhthu` = '$doanhthu' where date = '$date'";
+        pdo_execute($sql);
+    }
+    function add_thongke($soluong,$doanhthu){
+        $sql = "INSERT INTO `thongke`(`soluong`,`doanhthu`,`date`) VALUES ('$soluong','$doanhthu',NOW())";
+        // INSERT INTO `thongke`(`id`, `soluong`, `doanhthu`, `date`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
         pdo_execute($sql);
     }

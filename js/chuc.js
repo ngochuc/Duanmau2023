@@ -128,6 +128,7 @@ $('.count_cart').on('change',function(){
     }
     document.querySelector(".total_price").textContent = formatMoney(totalprice);
 })
+
 $('.xoacmt').on('click', function(){
     Swal.fire({
         background: '#fff',
@@ -156,7 +157,7 @@ $('.xoacart').on('click', function(){
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.open('view/cart/xoaspcart.php?idpro=' + $(this).attr('data-idpro')+'&iduser='+$(this).attr('data-iduser'))
+        window.open('view/cart/xoaspcart.php?idpro=' + $(this).attr('data-idpro')+'&from='+$(this).attr('from'))
       }
     })
 })
@@ -216,18 +217,72 @@ function change_address(){
   console.log('1');
 }
 $('.count_cart').change( function(){
-  console.log('change count');
   var xmlhttp = new XMLHttpRequest();
   id_pro = $(this).attr('data-idpro');
   count_cart = $(this).val();
-  console.log(count_cart);
-  console.log(id_pro);
+
   xmlhttp.onreadystatechange = function() {
   };
   xmlhttp.open("GET", "./index.php?act=addcart&count_cart="+count_cart +"&idpro=" + id_pro, true);
   xmlhttp.send();
 })
+$('.minus_cart').on('click', function(){
+  var input = $(this).siblings('input');
+  var count_cart = parseInt(input.val()) - 1;
+  var id_pro = input.attr('data-idpro');
+  input.attr('value',count_cart);
 
+  var price = $(input).parents('.number-input').siblings('.bill-pro-price').attr('price_sp');
+  var subtotal_block = $(input).parents('.number-input').siblings('.bill-pro-subtotal');
+  subtotal = parseInt(count_cart)*parseInt(price);
+  subtotal_block.html(formatMoney(subtotal));
+  subtotal_block.attr('value',subtotal);
+  total_price_cart = 0; 
+  var subtotal_blocks =  $('.bill-pro-subtotal').each(function(key,value){
+    var gtri = $(value).attr('value');
+    total_price_cart += parseInt(gtri);
+  });
+  $('.total_price-cart').html(formatMoney(total_price_cart));
+  $('.total_bill').html(formatMoney(parseInt(total_price_cart)+20000)); 
+
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState === 4){
+    }
+  }
+  xmlhttp.open("GET", "./index.php?act=addcart&count_cart="+count_cart +"&idpro=" + id_pro, true);
+  xmlhttp.send();
+})
+$('.plus_cart').on('click', function(){
+  var input = $(this).siblings('input');
+  var count_cart = parseInt(input.val()) + 1;
+  var id_pro = input.attr('data-idpro');
+  input.attr('value',count_cart);
+
+  var price = $(input).parents('.number-input').siblings('.bill-pro-price').attr('price_sp');
+  var subtotal_block = $(input).parents('.number-input').siblings('.bill-pro-subtotal');
+  subtotal = parseInt(count_cart)*parseInt(price);
+  subtotal_block.html(formatMoney(subtotal));
+  subtotal_block.attr('value',subtotal);
+  total_price_cart = 0; 
+  var subtotal_blocks =  $('.bill-pro-subtotal').each(function(key,value){
+    var gtri = $(value).attr('value');
+    total_price_cart += parseInt(gtri);
+  });
+  $('.total_price-cart').html(formatMoney(total_price_cart));
+  $('.total_bill').html(formatMoney(parseInt(total_price_cart)+20000)); 
+
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState === 4){
+    }
+  }
+  xmlhttp.open("GET", "./index.php?act=addcart&count_cart="+count_cart +"&idpro=" + id_pro, true);
+  xmlhttp.send();
+})
+$('.count_cart').change(function(){
+
+})
 $('.delete-address').on('click', function(){
   Swal.fire({
       background: '#fff',
@@ -248,18 +303,26 @@ $('.info_user-hoso').on('click',function(){
   $('.right_info-info').css('display','block');
   $('.right_info-address').css('display','none');
   $('.right_info-orders').css('display','none');
+  $('.right_info-repass').css('display','none');
 })
 $('.info_user-diachi').on('click',function(){
   $('.right_info-info').css('display','none');
   $('.right_info-orders').css('display','none');
+  $('.right_info-repass').css('display','none');
   $('.right_info-address').css('display','block');
 })
 $('.info_user-orders').on('click',function(){
   $('.right_info-info').css('display','none');
   $('.right_info-address').css('display','none');
+  $('.right_info-repass').css('display','none');
   $('.right_info-orders').css('display','block');
 })
-// $('.count_page').attr('page');
+$('.info_user-pass').on('click',function(){
+  $('.right_info-info').css('display','none');
+  $('.right_info-address').css('display','none');
+  $('.right_info-orders').css('display','none');
+  $('.right_info-repass').css('display','block');
+})
 $('.index_page').each(function (){
   if($(this).attr('data-page') == $('.count_page').attr('page')){
     $(this).addClass('page_active');
@@ -287,7 +350,7 @@ $('.step0').slice(0,$('#progressbar').attr('count_status')).each(function(){
 })
 // xử lí số lượng trong chi tiết sản phẩm
 $('.detail_pro-color').on('change',function(){
-  var color  = $(this).val() ;
+  var color  = $(this).val();
    var a = $('.count_pro_cart').attr('data-quatyti');
    var b = JSON.parse(a);
    $.each(b,function(key,value){

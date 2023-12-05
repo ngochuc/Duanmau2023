@@ -12,14 +12,13 @@
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="js/chuc.js"></script>
-
-
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <img src="upload/logo.png" alt="" height="80px" width="auto" style="margin-left: 50%;">
+                <a href="index.php?act=home"><img src="upload/logo.png" alt="" height="80px" width="auto" style="margin-left: 50%;"></a>
+
             </div>
             <nav class="stroke">
                 <ul>

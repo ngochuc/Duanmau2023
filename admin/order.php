@@ -47,7 +47,6 @@
                 <?php if($status['status'] == 'ordered'):?>
                 <a href="index.php?act=editorder&id=<?php echo $id ?>&state=shipped" class="btn_add-admin shipped_order">Đã ship</a>
                 <?php endif ?>
-                <a class="btn_dele-admin xoa_order" data-id="<?php echo $id ?>">delete</a>
             </td>
             <td> <?php echo $id ?></td>
             <td>

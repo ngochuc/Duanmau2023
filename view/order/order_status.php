@@ -3,7 +3,7 @@
         $id_order = $_GET['id_order'];
         $order = load_order($id_order);
         $list_pro =json_decode($order['product']);
-        $status = load_status_order($id_order);
+        $status = load_status_order_count($id_order);
         if($status){
             if(!isset($status[0])){
                 $count_status = 1;
@@ -26,7 +26,7 @@
 
 <section class="address">
     <div class="progress-track">
-        <ul id="progressbar" count_status = "<?php echo $count_status ?>" date_status ="<?php var_dump($date_status); ?>">
+        <ul id="progressbar" count_status = "<?php echo $count_status ?>" date_status ="<?php print_r($date_status); ?>">
             <li class="step0 " status = "ordered" id="step1">Ordered  <?php if($count_date >=1) echo 'in '.$date_status[0] ?></li>
             <li class="step0 " style="text-align: center;"  id="step2">Shipped  <?php if($count_date >=2) echo 'in '.$date_status[1] ?></li>
             <li class="step0 " style="text-align: right;"  id="step3" >On the way  <?php if($count_date >=3) echo 'in '.$date_status[2] ?></li>
@@ -90,5 +90,4 @@
             </div>
         </div>
     </div>
-    <!-- <button type="submit" style="border: none; color: white; cursor: pointer;" class="btn_more">Pay</button> -->
 </section>

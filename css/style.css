@@ -1273,7 +1273,7 @@ form{
     & .bill-header{
         display: flex;
         align-items: center;
-        & :nth-child(4),:nth-child(2),:nth-child(3){
+        & :nth-child(4),:nth-child(2),:nth-child(3),:nth-child(5){
             color: gray;
             display: flex;
             justify-content: center;
@@ -1628,7 +1628,7 @@ form{
         flex: 8;
         background-color: #fff;
     }
-    & .right_info-info{
+    & .right_info-info,.right_info-repass{
         padding: 10px;
         box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
         
@@ -1847,6 +1847,15 @@ form{
                     }
                     
                 }
+            }
+        }
+    }
+    & .right_info-repass{
+        display: none;
+        & .right-info_body{
+            & .err{
+                color: red;
+                text-align: center;
             }
         }
     }
