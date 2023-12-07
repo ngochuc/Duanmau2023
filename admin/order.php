@@ -3,7 +3,6 @@
         $id_order  = $_POST['id_order'];
         $id_user = $_POST['id_user'];
         $listorder = load_order_filter($id_order,$id_user);
-
     }else{
         if(isset($_GET['page'])){
             $index = $_GET['page'];

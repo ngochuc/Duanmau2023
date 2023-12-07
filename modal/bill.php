@@ -48,7 +48,7 @@
     }
     function load_all_order($index,$soluong){
         $sql = "SELECT a.id,product,ngay_dat,total_price,detail_location,tinh,a.id_user from `order` as a 
-        inner join `address` as b  on a.id_address = b.id limit $index,$soluong";
+        inner join `address` as b  on a.id_address = b.id order by ngay_dat desc limit $index,$soluong ";
         $result = pdo_query($sql);
         return $result;
     }
@@ -83,6 +83,7 @@
         if(!empty($id_user)){
             $sql .= " AND a.id_user = $id_user";
         }
+        $sql .= 'and order by `ngay_dat` desc';
         $result = pdo_query($sql);
         return $result;
     }

@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <header>
-            <nav style="list-style: none; gap:15px;">
+            <nav style="list-style: none; gap:30px;">
                 <li><a href="<?php echo 'index.php?act=sanpham' ?>">Sản phẩm</a></li>
                 <li><a href="<?php echo 'index.php?act=danhmuc' ?>">Danh mục</a></li>
                 <li><a href="<?php echo 'index.php?act=binhluan' ?>">Bình luận</a></li>

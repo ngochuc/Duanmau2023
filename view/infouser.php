@@ -114,10 +114,6 @@
             <i class="fa-solid fa-clipboard-list"></i>
             <p class="info_user-orders">Đơn mua</p>
         </div>
-        <div class="left_inof-vouchers">
-            <i class="fa-solid fa-ticket"></i>
-            <p>Kho voucher</p>
-        </div>
     </div>
     <div class="right_info  right_info-info" >
         <div class="right-info_header">
